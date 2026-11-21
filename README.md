@@ -1,6 +1,6 @@
 # Enterprise AI Support Platform
 
-A production-grade AI support agent built across 12 sessions using LangGraph, Google Gemini, and FastAPI. Each session adds one architectural capability on top of the last, resulting in a fully operational multi-agent system with human-in-the-loop approval, persistent state, and time-travel debugging.
+A production-grade AI support agent built across 12 sessions using LangGraph, OpenRouter, and FastAPI. Each session adds one architectural capability on top of the last, resulting in a fully operational multi-agent system with human-in-the-loop approval, persistent state, and time-travel debugging.
 
 ---
 
@@ -16,7 +16,8 @@ pip install -r requirements.txt
 python -m spacy download en_core_web_lg
 
 # 3. Set environment variables
-cp .env.example .env          # then fill in GOOGLE_API_KEY
+# .env is already supported; set OPENROUTER_API_KEY there.
+# OPENROUTER_MODEL defaults to openai/gpt-4o-mini.
 # Optional: GITHUB_TOKEN, GITHUB_REPO for real GitHub issue creation
 
 # 4. Start the server
@@ -224,7 +225,8 @@ Key additions: `state_forensics`, `find_bad_checkpoint`, `apply_correction`, `ti
 
 | Variable | Required | Description |
 |---|---|---|
-| `GOOGLE_API_KEY` | Yes | Gemini API key — get one at aistudio.google.com |
+| `OPENROUTER_API_KEY` | Yes | OpenRouter API key |
+| `OPENROUTER_MODEL` | No | OpenRouter model ID (default: `openai/gpt-4o-mini`) |
 | `GITHUB_TOKEN` | No | GitHub personal access token for real issue creation |
 | `GITHUB_REPO` | No | Target repo in `owner/repo` format (e.g. `acme/support`) |
 
